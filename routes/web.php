@@ -14,5 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('sample.dashboard');
+});
+
+Route::get('/sample', function () {
+    $page = request()->query('page') ?? 'dashboard';
+    return view('sample.'.$page);
 });

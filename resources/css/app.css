@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .form-input, .form-select, .form-multiselect, .form-textarea {
+    @apply rounded-md focus:ring-4;
+  }
+  .form-checkbox {
+    @apply rounded focus:ring-4;
+  }
+}
