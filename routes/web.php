@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('sample.dashboard');
 });
 
+Route::get('/login', function () {
+    return view('login');
+});
+
 Route::get('/sample', function () {
     $page = request()->query('page') ?? 'dashboard';
     return view('sample.'.$page);
