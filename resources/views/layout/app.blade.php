@@ -7,6 +7,7 @@
   <title>{{ $title ?? config('app.name') }}</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
+  <link rel="stylesheet" href="{{ asset('vendor/fontawesome/css/all.min.css') }}" />
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <script src="{{ asset('js/app.js') }}"></script>
 
