@@ -30,7 +30,10 @@
     <ul class="flex items-center flex-shrink-0 space-x-6">
       <!-- Theme toggler -->
       <li class="flex">
-        <button class="rounded-md focus:outline-none focus:ring-4 focus:ring-primary-500/25 dark:focus:ring-gray-300/25" @click="toggleTheme"
+        <button 
+          class="rounded-md focus:outline-none focus:ring-4 focus:ring-primary-500/25 dark:focus:ring-gray-300/25"
+          x-data
+          @click="toggleDarkMode"
           aria-label="Toggle color mode">
           <template x-if="!dark">
             <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
@@ -50,7 +53,7 @@
       <li class="relative" x-data="{notifOpen:false}">
         <button class="relative align-middle rounded-md focus:outline-none focus:ring-4 focus:ring-primary-500/25 dark:focus:ring-gray-300/25"
           @click="notifOpen=!notifOpen"
-          @click.away="notifOpen = false"
+          @click.outside="notifOpen = false"
           @keydown.escape="notifOpen = false"
           aria-label="Notifications"
           aria-haspopup="true">
@@ -103,7 +106,7 @@
       <li class="relative" x-data="{profileOpen:false}">
         <button class="align-middle rounded-full focus:ring-4 focus:ring-primary-500/25 dark:focus:ring-gray-300/25 focus:outline-none"
           @click="profileOpen=!profileOpen"
-          @click.away="profileOpen = false"
+          @click.outside="profileOpen = false"
           @keydown.escape="profileOpen = false"
           aria-label="Account"
           aria-haspopup="true">
@@ -143,7 +146,7 @@
             </li>
             <li class="flex">
               <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-                href="#">
+                href="{{ route('logout') }}">
                 <svg class="w-4 h-4 mr-3" aria-hidden="true" fill="none" stroke-linecap="round"
                   stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                   <path

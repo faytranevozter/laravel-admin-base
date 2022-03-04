@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html :class="{ dark: dark }" x-data="appdata" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html x-data="appdata" :class="{ dark: dark }" lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="">
 
 <head>
   <meta charset="UTF-8" />
@@ -7,8 +7,7 @@
   <title>{{ $title ?? config('app.name') }}</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
-  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-  <script src="{{ asset('js/app.js') }}"></script>
+  <script src="{{ asset('js/app.js') }}" defer></script>
 
   @stack('head')
 </head>
@@ -26,19 +25,23 @@
             <h1 class="mb-4 text-xl font-semibold text-gray-700 dark:text-gray-200">
               Login
             </h1>
-            <label class="block text-sm">
-              <span class="text-gray-700 dark:text-gray-400">Email</span>
-              <input class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-primary-400 focus:outline-none focus:ring-4 focus:ring-primary-500/25 dark:focus:ring-gray-300/25 dark:text-gray-300 form-input" placeholder="Jane Doe" />
-            </label>
-            <label class="block mt-4 text-sm">
-              <span class="text-gray-700 dark:text-gray-400">Password</span>
-              <input class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-primary-400 focus:outline-none focus:ring-4 focus:ring-primary-500/25 dark:focus:ring-gray-300/25 dark:text-gray-300 form-input" placeholder="***************" type="password" />
-            </label>
-
-            <!-- You should use a button here, as the anchor is only used for the example  -->
-            <button type="button" class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-primary-600 border border-transparent rounded-lg active:bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-4 focus:bg-primary-700 focus:ring-primary-500/25" href="../index.html">
-              Log in
-            </button>
+            <form action="{{ route('login.action') }}" method="POST">
+              @csrf
+              <label class="block text-sm">
+                <span class="text-gray-700 dark:text-gray-400">Email</span>
+                <input type="text" name="username" class="block w-full mt-1 text-sm {{ $errors->has('username') ? 'border-red-400 dark:border-red-400 focus:border-red-400 focus:ring-red-500/25' : 'dark:border-gray-600 focus:border-primary-400 focus:ring-primary-500/25 dark:focus:ring-gray-600/25' }}  dark:bg-gray-700  focus:outline-none focus:ring-4 dark:text-gray-300 form-input" placeholder="Email" value="{{ old('username') ?? '' }}" />
+                <span class="text-xs text-red-600 dark:text-red-400">{{ $errors->first('username') }}</span>
+              </label>
+              <label class="block mt-4 text-sm">
+                <span class="text-gray-700 dark:text-gray-400">Password</span>
+                <input type="password" name="password" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-primary-400 focus:outline-none focus:ring-4 focus:ring-primary-500/25 dark:focus:ring-gray-600/25 dark:text-gray-300 form-input" />
+              </label>
+  
+              <!-- You should use a button here, as the anchor is only used for the example  -->
+              <button type="submit" class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-primary-600 border border-transparent rounded-lg active:bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-4 focus:bg-primary-700 focus:ring-primary-500/25" href="../index.html">
+                Log in
+              </button>
+            </form>
 
             <p class="mt-4">
               <a class="text-sm font-medium text-primary-600 dark:text-primary-400 hover:underline"
@@ -57,6 +60,28 @@
       </div>
     </div>
   </div>
+
+  <div class="fixed grid place-items-center w-10 h-10 right-3 bottom-3 border dark:border-gray-700 rounded shadow-sm text-primary-600 dark:text-primary-300 bg-white dark:bg-gray-800">
+    <button 
+      class="rounded-md focus:outline-none focus:ring-4 focus:ring-primary-500/25 dark:focus:ring-gray-300/25"
+      x-data
+      @click="toggleDarkMode"
+      aria-label="Toggle color mode">
+      <template x-if="!dark">
+        <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+        </svg>
+      </template>
+      <template x-if="dark">
+        <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd"
+            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+            clip-rule="evenodd"></path>
+        </svg>
+      </template>
+    </button>
+  </div>
+
 </body>
 
 </html>

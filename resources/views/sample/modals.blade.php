@@ -39,7 +39,7 @@
     </div>
 
     <div>
-      <button @click="openModal"
+      <button @click="openModal(document.querySelector('#modal'))"
         class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-primary-600 border border-transparent rounded-lg active:bg-primary-600 hover:bg-primary-700 focus:outline-none focus:shadow-outline-primary">
         Open Modal
       </button>
@@ -57,7 +57,7 @@
     <div x-show="isModalOpen" x-transition:enter="transition ease-out duration-150"
       x-transition:enter-start="opacity-0 transform translate-y-1/2" x-transition:enter-end="opacity-100"
       x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100"
-      x-transition:leave-end="opacity-0  transform translate-y-1/2" @click.away="closeModal"
+      x-transition:leave-end="opacity-0  transform translate-y-1/2" @click.outside="closeModal"
       @keydown.escape="closeModal"
       class="w-full px-6 py-4 overflow-hidden bg-white rounded-t-lg dark:bg-gray-800 sm:rounded-lg sm:m-4 sm:max-w-xl"
       role="dialog" id="modal">

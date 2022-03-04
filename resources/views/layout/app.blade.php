@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html :class="{ dark: dark }" x-data="appdata" lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="">
+<html x-data="appdata" :class="{ dark: dark }" lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="">
 
 <head>
   <meta charset="UTF-8" />
@@ -8,8 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
   <link rel="stylesheet" href="{{ asset('vendor/fontawesome/css/all.min.css') }}" />
-  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-  <script src="{{ asset('js/app.js') }}"></script>
+  <script src="{{ asset('js/app.js') }}" defer></script>
 
   @stack('head')
 </head>
