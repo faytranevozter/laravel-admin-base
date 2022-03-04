@@ -17,42 +17,59 @@
     <div class="flex-1 h-full max-w-4xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl dark:bg-gray-800">
       <div class="flex flex-col overflow-y-auto md:flex-row">
         <div class="h-32 md:h-auto md:w-1/2">
-          <img aria-hidden="true" class="object-cover w-full h-full dark:hidden" src="{{ asset('img/login-office.jpeg') }}" alt="Office" />
-          <img aria-hidden="true" class="hidden object-cover w-full h-full dark:block" src="{{ asset('img/login-office-dark.jpeg') }}" alt="Office" />
+          <img aria-hidden="true" class="object-cover w-full h-full dark:hidden"
+            src="{{ asset('img/create-account-office.jpeg') }}" alt="Office" />
+          <img aria-hidden="true" class="hidden object-cover w-full h-full dark:block"
+            src="{{ asset('img/create-account-office-dark.jpeg') }}" alt="Office" />
         </div>
         <div class="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
           <div class="w-full">
             <h1 class="mb-4 text-xl font-semibold text-gray-700 dark:text-gray-200">
-              Login
+              Create account
             </h1>
-            <form action="{{ route('login.action') }}" method="POST">
+            <form action="" method="POST">
               @csrf
               <label class="block text-sm">
+                <span class="text-gray-700 dark:text-gray-400">Name</span>
+                <input type="text" name="name" class="block w-full mt-1 text-sm {{ $errors->has('name') ? 'border-red-400 dark:border-red-400 focus:border-red-400 focus:ring-red-500/25' : 'dark:border-gray-600 focus:border-primary-400 focus:ring-primary-500/25 dark:focus:ring-gray-600/25' }}  dark:bg-gray-700  focus:outline-none focus:ring-4 dark:text-gray-300 form-input" placeholder="Name" value="{{ old('name') ?? '' }}" />
+                <span class="text-xs text-red-600 dark:text-red-400">{{ $errors->first('name') }}</span>
+              </label>
+              <label class="block mt-4 text-sm">
                 <span class="text-gray-700 dark:text-gray-400">Email</span>
                 <input type="text" name="username" class="block w-full mt-1 text-sm {{ $errors->has('username') ? 'border-red-400 dark:border-red-400 focus:border-red-400 focus:ring-red-500/25' : 'dark:border-gray-600 focus:border-primary-400 focus:ring-primary-500/25 dark:focus:ring-gray-600/25' }}  dark:bg-gray-700  focus:outline-none focus:ring-4 dark:text-gray-300 form-input" placeholder="Email" value="{{ old('username') ?? '' }}" />
                 <span class="text-xs text-red-600 dark:text-red-400">{{ $errors->first('username') }}</span>
               </label>
               <label class="block mt-4 text-sm">
                 <span class="text-gray-700 dark:text-gray-400">Password</span>
-                <input type="password" name="password" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-primary-400 focus:outline-none focus:ring-4 focus:ring-primary-500/25 dark:focus:ring-gray-600/25 dark:text-gray-300 form-input" />
+                <input type="password" name="password" class="block w-full mt-1 text-sm {{ $errors->has('password') ? 'border-red-400 dark:border-red-400 focus:border-red-400 focus:ring-red-500/25' : 'dark:border-gray-600 focus:border-primary-400 focus:ring-primary-500/25 dark:focus:ring-gray-600/25' }}  dark:bg-gray-700  focus:outline-none focus:ring-4 dark:text-gray-300 form-input" placeholder="Password" />
+                <span class="text-xs text-red-600 dark:text-red-400">{{ $errors->first('password') }}</span>
               </label>
-  
-              <!-- You should use a button here, as the anchor is only used for the example  -->
+              <label class="block mt-4 text-sm">
+                <span class="text-gray-700 dark:text-gray-400">Confirm password</span>
+                <input type="password" name="password_confirmation" class="block w-full mt-1 text-sm {{ $errors->has('password_confirmation') ? 'border-red-400 dark:border-red-400 focus:border-red-400 focus:ring-red-500/25' : 'dark:border-gray-600 focus:border-primary-400 focus:ring-primary-500/25 dark:focus:ring-gray-600/25' }}  dark:bg-gray-700  focus:outline-none focus:ring-4 dark:text-gray-300 form-input" placeholder="Password Confirmation" />
+                <span class="text-xs text-red-600 dark:text-red-400">{{ $errors->first('password_confirmation') }}</span>
+              </label>
+
+              <div class="flex mt-6 text-sm">
+                <label class="flex items-center dark:text-gray-400">
+                  <input type="checkbox"
+                    required
+                    class="text-primary-600 form-checkbox focus:border-primary-400 focus:outline-none focus:shadow-outline-primary dark:focus:shadow-outline-gray" />
+                  <span class="ml-2">
+                    I agree to the
+                    <span class="underline">privacy policy</span>
+                  </span>
+                </label>
+              </div>
+
               <button type="submit" class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-primary-600 border border-transparent rounded-lg active:bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-4 focus:bg-primary-700 focus:ring-primary-500/25" href="../index.html">
-                Log in
+                Create account
               </button>
             </form>
 
             <p class="mt-4">
-              <a class="text-sm font-medium text-primary-600 dark:text-primary-400 hover:underline"
-                href="#">
-                Forgot your password?
-              </a>
-            </p>
-            <p class="mt-1">
-              <a class="text-sm font-medium text-primary-600 dark:text-primary-400 hover:underline"
-                href="{{ route('register') }}">
-                Create account
+              <a class="text-sm font-medium text-primary-600 dark:text-primary-400 hover:underline" href="{{ route('login') }}">
+                Already have an account? Login
               </a>
             </p>
           </div>
