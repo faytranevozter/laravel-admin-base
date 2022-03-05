@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html x-data="appdata" :class="{ dark: dark }" lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="">
+<html x-data="appdata" :class="{ dark: dark }" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
   <meta charset="UTF-8" />
@@ -31,30 +31,28 @@
               @csrf
               <label class="block text-sm">
                 <span class="text-gray-700 dark:text-gray-400">Name</span>
-                <input type="text" name="name" class="block w-full mt-1 text-sm {{ $errors->has('name') ? 'border-red-400 dark:border-red-400 focus:border-red-400 focus:ring-red-500/25' : 'dark:border-gray-600 focus:border-primary-400 focus:ring-primary-500/25 dark:focus:ring-gray-600/25' }}  dark:bg-gray-700  focus:outline-none focus:ring-4 dark:text-gray-300 form-input" placeholder="Name" value="{{ old('name') ?? '' }}" />
+                <input type="text" name="name" class="form-input mt-1 {{ $errors->has('name') ? 'invalid' : '' }}" placeholder="Name" value="{{ old('name') ?? '' }}" />
                 <span class="text-xs text-red-600 dark:text-red-400">{{ $errors->first('name') }}</span>
               </label>
               <label class="block mt-4 text-sm">
                 <span class="text-gray-700 dark:text-gray-400">Email</span>
-                <input type="text" name="username" class="block w-full mt-1 text-sm {{ $errors->has('username') ? 'border-red-400 dark:border-red-400 focus:border-red-400 focus:ring-red-500/25' : 'dark:border-gray-600 focus:border-primary-400 focus:ring-primary-500/25 dark:focus:ring-gray-600/25' }}  dark:bg-gray-700  focus:outline-none focus:ring-4 dark:text-gray-300 form-input" placeholder="Email" value="{{ old('username') ?? '' }}" />
+                <input type="text" name="username" class="form-input mt-1 {{ $errors->has('username') ? 'invalid' : '' }}" placeholder="Email" value="{{ old('username') ?? '' }}" />
                 <span class="text-xs text-red-600 dark:text-red-400">{{ $errors->first('username') }}</span>
               </label>
               <label class="block mt-4 text-sm">
                 <span class="text-gray-700 dark:text-gray-400">Password</span>
-                <input type="password" name="password" class="block w-full mt-1 text-sm {{ $errors->has('password') ? 'border-red-400 dark:border-red-400 focus:border-red-400 focus:ring-red-500/25' : 'dark:border-gray-600 focus:border-primary-400 focus:ring-primary-500/25 dark:focus:ring-gray-600/25' }}  dark:bg-gray-700  focus:outline-none focus:ring-4 dark:text-gray-300 form-input" placeholder="Password" />
+                <input type="password" name="password" class="form-input mt-1 {{ $errors->has('password') ? 'invalid' : '' }}" placeholder="Password" />
                 <span class="text-xs text-red-600 dark:text-red-400">{{ $errors->first('password') }}</span>
               </label>
               <label class="block mt-4 text-sm">
                 <span class="text-gray-700 dark:text-gray-400">Confirm password</span>
-                <input type="password" name="password_confirmation" class="block w-full mt-1 text-sm {{ $errors->has('password_confirmation') ? 'border-red-400 dark:border-red-400 focus:border-red-400 focus:ring-red-500/25' : 'dark:border-gray-600 focus:border-primary-400 focus:ring-primary-500/25 dark:focus:ring-gray-600/25' }}  dark:bg-gray-700  focus:outline-none focus:ring-4 dark:text-gray-300 form-input" placeholder="Password Confirmation" />
+                <input type="password" name="password_confirmation" class="form-input mt-1 {{ $errors->has('password_confirmation') ? 'invalid' : '' }}" placeholder="Password Confirmation" />
                 <span class="text-xs text-red-600 dark:text-red-400">{{ $errors->first('password_confirmation') }}</span>
               </label>
 
               <div class="flex mt-6 text-sm">
                 <label class="flex items-center dark:text-gray-400">
-                  <input type="checkbox"
-                    required
-                    class="text-primary-600 form-checkbox focus:border-primary-400 focus:outline-none focus:shadow-outline-primary dark:focus:shadow-outline-gray" />
+                  <input type="checkbox" class="form-checkbox" required />
                   <span class="ml-2">
                     I agree to the
                     <span class="underline">privacy policy</span>
@@ -62,7 +60,7 @@
                 </label>
               </div>
 
-              <button type="submit" class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-primary-600 border border-transparent rounded-lg active:bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-4 focus:bg-primary-700 focus:ring-primary-500/25" href="../index.html">
+              <button type="submit" class="btn btn-primary w-full mt-4">
                 Create account
               </button>
             </form>

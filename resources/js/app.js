@@ -54,7 +54,7 @@ function focusTrap(element) {
 }
 
 window.appdata = () => ({
-  dark: Alpine.$persist('dark'),
+  dark: Alpine.$persist(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches),
   toggleDarkMode() {
     this.dark = !this.dark
   },

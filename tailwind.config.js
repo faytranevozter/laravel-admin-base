@@ -11,7 +11,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: colors.emerald,
+        primary: colors.indigo,
       },
       maxHeight: {
         '0': '0',

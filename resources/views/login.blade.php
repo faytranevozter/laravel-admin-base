@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html x-data="appdata" :class="{ dark: dark }" lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="">
+<html x-data="appdata" :class="{ dark: dark }" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
   <meta charset="UTF-8" />
@@ -29,16 +29,15 @@
               @csrf
               <label class="block text-sm">
                 <span class="text-gray-700 dark:text-gray-400">Email</span>
-                <input type="text" name="username" class="block w-full mt-1 text-sm {{ $errors->has('username') ? 'border-red-400 dark:border-red-400 focus:border-red-400 focus:ring-red-500/25' : 'dark:border-gray-600 focus:border-primary-400 focus:ring-primary-500/25 dark:focus:ring-gray-600/25' }}  dark:bg-gray-700  focus:outline-none focus:ring-4 dark:text-gray-300 form-input" placeholder="Email" value="{{ old('username') ?? '' }}" />
+                <input type="text" name="username" class="form-input mt-1 {{ $errors->has('username') ? 'invalid' : '' }}" placeholder="Email" value="{{ old('username') ?? '' }}" />
                 <span class="text-xs text-red-600 dark:text-red-400">{{ $errors->first('username') }}</span>
               </label>
               <label class="block mt-4 text-sm">
                 <span class="text-gray-700 dark:text-gray-400">Password</span>
-                <input type="password" name="password" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-primary-400 focus:outline-none focus:ring-4 focus:ring-primary-500/25 dark:focus:ring-gray-600/25 dark:text-gray-300 form-input" />
+                <input type="password" name="password" class="form-input mt-1" />
               </label>
   
-              <!-- You should use a button here, as the anchor is only used for the example  -->
-              <button type="submit" class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-primary-600 border border-transparent rounded-lg active:bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-4 focus:bg-primary-700 focus:ring-primary-500/25" href="../index.html">
+              <button type="submit" class="btn btn-primary w-full mt-4">
                 Log in
               </button>
             </form>
