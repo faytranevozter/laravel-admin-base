@@ -1,8 +1,8 @@
 {
-    "name": "laravel/laravel",
+    "name": "faytranevozter/laravel-admin-base",
     "type": "project",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "description": "Base laravel admin with simple auth and with tailwindcss (based on windmill-ui)",
+    "keywords": ["laravel", "tailwindcss", "windmill-ui"],
     "license": "MIT",
     "require": {
         "php": "^8.0.2",

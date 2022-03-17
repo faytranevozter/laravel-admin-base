@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0">
   <title>{{ $title ?? config('app.name') }}</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
@@ -36,17 +36,17 @@
               </label>
               <label class="block mt-4 text-sm">
                 <span class="text-gray-700 dark:text-gray-400">Email</span>
-                <input type="text" name="username" class="form-input mt-1 {{ $errors->has('username') ? 'invalid' : '' }}" placeholder="Email" value="{{ old('username') ?? '' }}" />
+                <input type="text" name="username" class="form-input mt-1 {{ $errors->has('username') ? 'invalid' : '' }}" placeholder="Email" value="{{ old('username') ?? '' }}" autocomplete="username" />
                 <span class="text-xs text-red-600 dark:text-red-400">{{ $errors->first('username') }}</span>
               </label>
               <label class="block mt-4 text-sm">
                 <span class="text-gray-700 dark:text-gray-400">Password</span>
-                <input type="password" name="password" class="form-input mt-1 {{ $errors->has('password') ? 'invalid' : '' }}" placeholder="Password" />
+                <input type="password" name="password" class="form-input mt-1 {{ $errors->has('password') ? 'invalid' : '' }}" placeholder="Password" autocomplete="new-password" />
                 <span class="text-xs text-red-600 dark:text-red-400">{{ $errors->first('password') }}</span>
               </label>
               <label class="block mt-4 text-sm">
                 <span class="text-gray-700 dark:text-gray-400">Confirm password</span>
-                <input type="password" name="password_confirmation" class="form-input mt-1 {{ $errors->has('password_confirmation') ? 'invalid' : '' }}" placeholder="Password Confirmation" />
+                <input type="password" name="password_confirmation" class="form-input mt-1 {{ $errors->has('password_confirmation') ? 'invalid' : '' }}" placeholder="Password Confirmation" autocomplete="new-password" />
                 <span class="text-xs text-red-600 dark:text-red-400">{{ $errors->first('password_confirmation') }}</span>
               </label>
 
